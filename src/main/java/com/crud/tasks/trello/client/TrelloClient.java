@@ -9,7 +9,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,16 +47,6 @@ public class TrelloClient {
         for (TrelloBoardDto dto : boardsResponse) {
             trelloBoards.add(Optional.of(dto));
         }
-
         return trelloBoards;
-
-        //return Arrays.asList(boardsResponse);
-/*
-        if (boardsResponse != null) {
-            return Arrays.asList(boardsResponse);
-        }
-        return new ArrayList<>();
-
-*/
     }
 }
