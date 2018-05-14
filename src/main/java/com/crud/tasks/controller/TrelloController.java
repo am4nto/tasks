@@ -14,7 +14,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/v1/trello")
@@ -42,25 +41,6 @@ public class TrelloController {
 
 
     }
-    /*
-    @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
-    public void getTrelloBoards() {
-
-        List<Optional<TrelloBoardDto>> trelloBoards = trelloClient.getTrelloBoards();
-
-        trelloBoards.stream()
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .filter(b -> b.getName() != null && b.getId() != null)
-                .filter(b -> b.getName().contains("Kodilla"))
-                .forEach(b -> {
-                    System.out.println(b.getName() + " " + b.getId() );
-                    System.out.println("This board contains lists: ");
-                    b.getLists().forEach(trelloList ->
-                            System.out.println(trelloList.getName() + " - " + trelloList.getId() + " - " + trelloList.isClosed()));
-                });
-    }
-    */
 
     @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard")
     public CreatedTrelloCard createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
