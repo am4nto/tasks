@@ -20,4 +20,7 @@ public interface TaskRepository extends CrudRepository<Task, Long> {
 
     @Override
     boolean exists(Long id);
+
+    @Override
+    long count();
 }
