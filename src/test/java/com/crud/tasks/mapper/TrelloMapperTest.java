@@ -19,7 +19,7 @@ public class TrelloMapperTest {
     @Autowired private TrelloMapper mapper;
 
     @Test
-    public void TestmapToBoards() {
+    public void mapToBoards() {
         //Given
         TrelloBoardDto boardDto = new TrelloBoardDto("001", "boardDTO", new ArrayList<>());
         List<TrelloBoardDto>boardDtos = new ArrayList<>();
@@ -28,18 +28,22 @@ public class TrelloMapperTest {
         List<TrelloBoard> boards = mapper.mapToBoards(boardDtos);
         //Then
         assertEquals(1, boards.size());
+        assertEquals("001", boards.get(0).getId());
+        assertEquals("boardDTO", boards.get(0).getName());
     }
 
     @Test
     public void mapToBoardsDto() {
         //Given
-        TrelloBoard board = new TrelloBoard("001", "boardDTO", new ArrayList<>());
+        TrelloBoard board = new TrelloBoard("001", "board", new ArrayList<>());
         List<TrelloBoard> boards = new ArrayList<>();
         boards.add(board);
         //When
         List<TrelloBoardDto> boardDtos = mapper.mapToBoardsDto(boards);
         //Then
         assertEquals(1, boardDtos.size());
+        assertEquals("001", boardDtos.get(0).getId());
+        assertEquals("board", boardDtos.get(0).getName());
     }
 
     @Test
@@ -52,6 +56,9 @@ public class TrelloMapperTest {
         List<TrelloList> lists = mapper.mapToList(listDtos);
         //Then
         assertEquals(1, lists.size());
+        assertEquals("001", lists.get(0).getId());
+        assertEquals("listDTO", lists.get(0).getName());
+        assertTrue(lists.get(0).isClosed());
     }
 
     @Test
@@ -64,6 +71,9 @@ public class TrelloMapperTest {
         List<TrelloListDto> listDtos = mapper.mapToListDto(lists);
         //Then
         assertEquals(1, listDtos.size());
+        assertEquals("001", listDtos.get(0).getId());
+        assertEquals("list", listDtos.get(0).getName());
+        assertTrue(listDtos.get(0).isClosed());
     }
 
     @Test
