@@ -41,5 +41,8 @@ dependencies {
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 
+	testCompile group: 'org.springframework.integration', name: 'spring-integration-test', version: '5.0.5.RELEASE'
+
+
 //	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 }
