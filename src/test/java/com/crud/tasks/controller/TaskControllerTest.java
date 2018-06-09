@@ -23,7 +23,9 @@ import java.util.Optional;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -97,6 +99,7 @@ public class TaskControllerTest {
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
+        verify(service, times(1)).deleteTask(any());
     }
 
     @Test
@@ -130,5 +133,6 @@ public class TaskControllerTest {
         this.mockMvc.perform(builder)
                 .andExpect(MockMvcResultMatchers.status()
                         .isOk());
+        verify(service, times(1)).saveTask(any());
     }
 }
