@@ -46,7 +46,11 @@ public class SimpleEmailService {
         mailMessage.setTo(mail.getMailTo());
         if(mail.getToCc() != null) {mailMessage.setCc(mail.getToCc());}
         mailMessage.setSubject(mail.getSubject());
-        mailMessage.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()));
+        if (mail.getSubject().contains("Once a day email")) {
+            mailMessage.setText(mailCreatorService.buildScheduledEmail(mail.getMessage()));
+        } else if (mail.getSubject().contains("New Trello card")) {
+            mailMessage.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()));
+        }
         return mailMessage;
     }
 }

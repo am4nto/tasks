@@ -20,4 +20,12 @@ public class Task {
 
     @Column(name = "description")
     private String content;
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }
