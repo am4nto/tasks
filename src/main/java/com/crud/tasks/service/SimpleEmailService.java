@@ -50,6 +50,8 @@ public class SimpleEmailService {
             mailMessage.setText(mailCreatorService.buildScheduledEmail(mail.getMessage()));
         } else if (mail.getSubject().contains("New Trello card")) {
             mailMessage.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()));
+        } else {
+            mailMessage.setText(mail.getMessage());
         }
         return mailMessage;
     }
